@@ -1,0 +1,32 @@
+{
+  "users": {
+    "id": "INTEGER PRIMARY KEY NOT NULL",
+    "author_id": "INTEGER NOT NULL",
+    "author_from": "STRING NOT NULL"
+  },
+  "help_requests": {
+    "id": "INTEGER PRIMARY KEY NOT NULL",
+    "user_id": "INTEGER NOT NULL",
+    "question": "STRING NOT NULL",
+    "time_requested": "TIMESTAMP NOT NULL"
+  },
+  "events": {
+    "id": "INTEGER PRIMARY KEY NOT NULL",
+    "name": "STRING NOT NULL",
+    "description": "STRING"
+  },
+  "calendar_day": {
+    "id": "INTEGER PRIMARY KEY NOT NULL",
+    "event_id": "INTEGER",
+    "day": "TIMESTAMP",
+    "day_type": "STRING"
+  },
+  "sub_event": {
+    "id": "INTEGER PRIMARY KEY NOT NULL",
+    "event_id": "INTEGER NOT NULL",
+    "name": "STRING NOT NULL",
+    "time_start": "TIMESTAMP",
+    "time_end": "TIMESTAMP",
+    "description": "STRING"
+  }
+}
