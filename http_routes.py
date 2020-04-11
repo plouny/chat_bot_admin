@@ -57,6 +57,18 @@ async def home(request: web.Request):
     pass
 
 
+@routes.route('*', "/insert")
+@aiohttp_jinja2.template("insert.jinja2")
+async def home(request: web.Request):
+    pass
+
+
+@routes.route('*', "/settings")
+@aiohttp_jinja2.template("settings.jinja2")
+async def home(request: web.Request):
+    pass
+
+
 @routes.route("*", "/{path}")
 async def other(request):
     raise web.HTTPFound('/admin')
