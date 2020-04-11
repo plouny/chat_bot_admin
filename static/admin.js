@@ -1,6 +1,6 @@
 $(() => {
-    $("#submit").click((e) => {
-        e.preventDefault();
+    $("#submit").click((ev) => {
+        ev.preventDefault();
         var form = $("#admin_form");
         var login = form.find('input[name="login"]').val();
         var password = form.find('input[name="password"]').val();

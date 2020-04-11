@@ -68,10 +68,14 @@ class AdapterDB(DB):
         return data_to_dict("events", self.exe("SELECT * FROM events WHERE id=?", event_id).fetchone())
 
     def insert_event(self, name, description=None) -> int:
-        return self.exe("INSERT INTO events(name, description) VALUES (?, ?, )",
+        return self.exe("INSERT INTO events(name, description) VALUES (?, ?)",
                         name,
                         description
                         ).lastrowid
+
+    def get_events(self):
+        return list(map(lambda row: data_to_dict("events", row),
+                        self.exe("SELECT * FROM events").fetchall()))
 
     def insert_calendar_day(self, event_id, day, day_type):
         return self.exe("INSERT INTO calendar_day(event_id, day, day_type) VALUES (?, ?, ?)",

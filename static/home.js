@@ -5,8 +5,10 @@ $(() => {
         var events = data.events;
         var help_requests = data.help_requests;
         console.log(data);
+        $("#events").empty();
+        $("#help_requests").empty();
         events.forEach(event => {
-            $("#events").append(`<div>${event.name}</div>`);
+            $("#events").append(`<div>${event.id}: ${event.name}</div>`);
         });
         help_requests.forEach(help_request => {
             $("#help_requests").append(`<div>${help_request.time_requested} ${help_request.question}</div>`)
@@ -20,14 +22,17 @@ $(() => {
         socket.emit("change", {delete: $(this).metadata()});
     });
 
-    $(".button_add").on("click", () => {
-        var div = $(this).parent();
+    $("form").submit((event) => {
         console.log($(this));
-        console.log(div);
-        var name = div.find($('input[name="event_name"]')).val();
-        var description = div.find($('input[name="event_description"]')).val();
-        var day_start = div.find($('input[name="day_start"]')).val();
-        var day_end = div.find($('input[name="day_end"]')).val();
+        console.log(event);
+        var form = $("form");
+        
+        var children = form.children();
+        console.log(children);
+        var name = children[0].value;
+        var description = children[1].value;
+        var day_start = children[2].value;
+        var day_end = children[3].value;
         var form = {
             name: name,
             description: description,
@@ -36,6 +41,7 @@ $(() => {
         };
         console.log(form);
         socket.emit("change", {add: form});
+        return false;
     });
 });
 
