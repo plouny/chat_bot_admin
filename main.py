@@ -5,8 +5,33 @@ import socketio
 import os
 from socket_routes import create_socket_routes
 from http_routes import routes
+from globals.globals import *
+from globals.functions import *
 
-app = web.Application()
+admin_only_paths = [
+    "/home",
+    "/insert",
+    "/settings",
+    "/logout"
+]
+
+
+@web.middleware
+async def middleware(request: web.Request, handler):
+    user_id = get_user_id(request)
+    path = request.path
+    print(path)
+    is_admin = False
+    if user_id in cache:
+        is_admin = cache[user_id]["is_admin"]
+    if path in admin_only_paths:
+        if is_admin:
+            return await handler(request)
+        return web.HTTPFound("/admin")
+    return await handler(request)
+
+
+app = web.Application(middlewares=[middleware])
 print(socketio)
 socket = socketio.AsyncServer()
 socket.attach(app)

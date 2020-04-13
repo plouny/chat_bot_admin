@@ -1,28 +1,13 @@
-from aiohttp import web
 from globals.globals import *
 import aiohttp_jinja2
+from globals.functions import *
 
 routes = web.RouteTableDef()
 routes.static('/static', "static/")
-i = 0
 sample_admin = {
     "login": "admin",
     "password": "admin"
 }
-
-
-def get_id():
-    global i
-    i += 1
-    return i
-
-
-def get_user_id(request):
-    peername = request.transport.get_extra_info("peername")
-    if not peername:
-        raise web.HTTPBadRequest
-    host, _ = peername
-    return host
 
 
 @routes.route("*", "/admin")
@@ -59,17 +44,26 @@ async def home(request: web.Request):
 
 @routes.route('*', "/insert")
 @aiohttp_jinja2.template("insert.jinja2")
-async def home(request: web.Request):
+async def insert(request: web.Request):
     pass
 
 
 @routes.route('*', "/settings")
 @aiohttp_jinja2.template("settings.jinja2")
-async def home(request: web.Request):
+async def settings(request: web.Request):
     pass
 
 
-@routes.route("*", "/{path}")
+@routes.route('*', "/logout")
+async def logout(request: web.Request):
+    user_id = get_user_id(request)
+    cache[user_id] = {
+        "is_admin": False
+    }
+    return web.HTTPFound("/admin")
+
+
+@routes.route("*", "/")
 async def other(request):
     raise web.HTTPFound('/admin')
 

@@ -25,12 +25,13 @@ def create_socket_routes(socket: socketio.AsyncServer):
     @socket.event
     async def change(sid, data):
         if not data:
-            await socket.emit("change", data={
+            return await socket.emit("change", data={
                 "help_requests": db.get_all_help_requests(),
                 "events": db.get_events()
             }, room=sid)
         if "add" in data:
             event = data["add"]
+            print(event)
             db.insert_event(event['name'], event['description'])
             for i in cache:
                 sid = cache[i]["sid"]

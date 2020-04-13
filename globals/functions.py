@@ -1,5 +1,14 @@
 import json
 import datetime
+from aiohttp import web
+
+
+def get_user_id(request):
+    peername = request.transport.get_extra_info("peername")
+    if not peername:
+        raise web.HTTPBadRequest
+    host, _ = peername
+    return host
 
 
 def open_json(fp):
