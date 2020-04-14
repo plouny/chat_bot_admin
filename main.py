@@ -8,11 +8,11 @@ from http_routes import routes
 from globals.globals import *
 from globals.functions import *
 
-admin_only_paths = [
-    "/home",
-    "/insert",
-    "/settings",
-    "/logout"
+user_only_paths = [
+    "/admin",
+    "/admin_auth",
+    "/static/admin.css",
+    "/static/admin.js"
 ]
 
 
@@ -24,11 +24,13 @@ async def middleware(request: web.Request, handler):
     is_admin = False
     if user_id in cache:
         is_admin = cache[user_id]["is_admin"]
-    if path in admin_only_paths:
-        if is_admin:
+    if path in user_only_paths:
+        if not is_admin:
             return await handler(request)
         return web.HTTPFound("/admin")
-    return await handler(request)
+    if is_admin:
+        return await handler(request)
+    return web.HTTPFound("/admin")
 
 
 app = web.Application(middlewares=[middleware])

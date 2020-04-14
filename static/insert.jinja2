@@ -1,41 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/static/home.css"/>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <title>Home</title>
-</head>
-<body>
-    <nav class="navbar bg-dark navbar-dark" style="width: 100%; justify-content: center;">
-            <a class="navbar-brand" href="/home">Home</a>
-            <a class="navbar-brand" href="insert">Add new event</a>
-        <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Account
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="/settings">Settings</a>
-                <a class="dropdown-item" href="/logout">Log out</a>
-                </div>
-            </li>
-    </nav>
-
-    <div class="main">
+{% extends "base.jinja2" %}
+{% block content %}
+<div class="main">
+    <div class="container_custom">
         <form action="" class="form">
-            <input placeholder="Event name" name="event_name"/>
-            <input placeholder="Event description" name="event_description"/>
+            <input placeholder="Event name" name="event_name" required/>
+            <input placeholder="Event description" name="event_description" required/>
             <input placeholder="Day start" name="day_start"/>
             <input placeholder="Day end" name="day_end"/>
             <button class="button_add">Submit</button>
         </form>
     </div>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <script type="text/javascript" src="/static/home.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}

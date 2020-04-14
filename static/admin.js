@@ -17,7 +17,7 @@ $(() => {
                 console.log(data)
                 if (data.ok != undefined) {
                     if (data.ok) {
-                        $(location).attr('href', "/home");
+                        $(location).attr('href', "/events");
                     } else {
                         $("#response").val(data.message)
                     }

@@ -1,37 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/static/settings.css"/>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <title>Home</title>
-</head>
-<body>
-    <nav class="navbar bg-dark navbar-dark" style="width: 100%; justify-content: center;">
-            <a class="navbar-brand" href="/home">Home</a>
-            <a class="navbar-brand" href="insert">Add new event</a>
-        <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Account
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="/settings">Settings</a>
-                <a class="dropdown-item" href="/logout">Log out</a>
-                </div>
-            </li>
-    </nav>
-
-    <div class="main">
-        <form action="" class="form">
-            <input placeholder="Old password" name="old"/>
-            <input placeholder="New password" name="new"/>
-            <input placeholder="Repeat new password" name="repeat"/>
-            <button class="button_add">Change password</button>
-        </form>
-    </div>
-</body>
-</html>
+{% extends "base.jinja2" %}
+<div class="main">
+    <form action="" class="form">
+        <input placeholder="Old password" name="old"/>
+        <input placeholder="New password" name="new"/>
+        <input placeholder="Repeat new password" name="repeat"/>
+        <button class="button_add">Change password</button>
+    </form>
+</div>
+{% endblock %}

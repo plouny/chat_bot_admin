@@ -4,10 +4,6 @@ from globals.functions import *
 
 routes = web.RouteTableDef()
 routes.static('/static', "static/")
-sample_admin = {
-    "login": "admin",
-    "password": "admin"
-}
 
 
 @routes.route("*", "/admin")
@@ -20,6 +16,10 @@ async def handle_admin(request: web.Request):
         }
     if cache[user_id]["is_admin"]:
         raise web.HTTPFound('/home')
+    return {
+        "title": "Admin",
+        "filename": "aAdmin"
+    }
 
 
 @routes.route("POST", "/admin_auth")
@@ -36,22 +36,49 @@ async def auth(request: web.Request):
     return web.json_response({"ok": False, "message": "Login or password is invalid"})
 
 
-@routes.route('*', "/home")
-@aiohttp_jinja2.template("home.jinja2")
-async def home(request: web.Request):
-    pass
+@routes.route('*', "/events")
+@aiohttp_jinja2.template("events.jinja2")
+async def events(request: web.Request):
+    return {
+        "title": "Events",
+        "filename": "events"
+    }
+
+
+@routes.route('*', "/help_requests")
+@aiohttp_jinja2.template("help_requests.jinja2")
+async def help_requests(request: web.Request):
+    return {
+        "title": "Help requests",
+        "filename": "help_requests"
+    }
 
 
 @routes.route('*', "/insert")
 @aiohttp_jinja2.template("insert.jinja2")
 async def insert(request: web.Request):
-    pass
+    return {
+        "title": "Insert",
+        "filename": "insert"
+    }
 
 
 @routes.route('*', "/settings")
 @aiohttp_jinja2.template("settings.jinja2")
 async def settings(request: web.Request):
-    pass
+    return {
+        "title": "Settings",
+        "filename": "settings"
+    }
+
+
+@routes.route('*', "/statistics")
+@aiohttp_jinja2.template("statistics.jinja2")
+async def statistics(request: web.Request):
+    return {
+        "title": "Statistics",
+        "filename": "statistics"
+    }
 
 
 @routes.route('*', "/logout")

@@ -39,3 +39,10 @@ def create_socket_routes(socket: socketio.AsyncServer):
                     await update(sid)
                 except:
                     pass
+        elif "password" in data:
+            password = data["password"]
+            if password["old"] == sample_admin["password"]:
+                sample_admin["password"] = password["new"]
+                await socket.emit("message", {"ok": True, "message": "Successfully changed password"})
+            else:
+                await socket.emit("message", {"ok": False, "message": "Old password doesn't match"})
