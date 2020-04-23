@@ -7,7 +7,7 @@ $(() => {
         console.log(data);
         $("#help_requests").empty();
         help_requests.forEach(help_request => {
-            $("#help_requests").append(`<div>${help_request.time_requested} ${help_request.question}</div>`)
+            $("#help_requests").append(`<div сlass="grid-item">${help_request.time_requested} ${help_request.question}</div>`)
         });
     });
     socket.on("connect", () => {

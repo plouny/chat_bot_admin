@@ -10,9 +10,9 @@
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     text-align: center;
-  }
+}
 
-  .form input {
+.form input {
     outline: 0;
     background: #f2f2f2;
     width: 100%;
@@ -25,8 +25,8 @@
     border-bottom-right-radius: 3px;
     box-sizing: border-box;
     font-size: 14px;
-  }
-  .form button {
+}
+.form button {
     outline: 0;
     background: #EF3B3A;
     width: 100%;
@@ -41,4 +41,4 @@
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
-  }
+}

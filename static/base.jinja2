@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/{{ filename }}.css">
+    {% for name in additional %}
+    <link rel="stylesheet" href="/static/css/{{ name }}.css">
+    {% endfor %}
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

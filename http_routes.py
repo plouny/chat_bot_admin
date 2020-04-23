@@ -41,7 +41,8 @@ async def auth(request: web.Request):
 async def events(request: web.Request):
     return {
         "title": "Events",
-        "filename": "events"
+        "filename": "events",
+        "additional": ["grid"]
     }
 
 
@@ -50,7 +51,8 @@ async def events(request: web.Request):
 async def help_requests(request: web.Request):
     return {
         "title": "Help requests",
-        "filename": "help_requests"
+        "filename": "help_requests",
+        "additional": ["grid"]
     }
 
 
@@ -59,7 +61,8 @@ async def help_requests(request: web.Request):
 async def insert(request: web.Request):
     return {
         "title": "Insert",
-        "filename": "insert"
+        "filename": "insert",
+        "additional": ["form"]
     }
 
 
@@ -68,7 +71,8 @@ async def insert(request: web.Request):
 async def settings(request: web.Request):
     return {
         "title": "Settings",
-        "filename": "settings"
+        "filename": "settings",
+        "additional": ["form"]
     }
 
 
