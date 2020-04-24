@@ -8,6 +8,11 @@ from http_routes import routes
 from globals.globals import *
 from globals.functions import *
 
+
+common_paths = [
+    "/static/css"
+]
+
 user_only_paths = [
     "/admin",
     "/admin_auth",
@@ -24,10 +29,14 @@ async def middleware(request: web.Request, handler):
     is_admin = False
     if user_id in cache:
         is_admin = cache[user_id]["is_admin"]
+
+    for i in common_paths:
+        if i in path:
+            return await handler(request)
     if path in user_only_paths:
         if not is_admin:
             return await handler(request)
-        return web.HTTPFound("/admin")
+        return web.HTTPFound("/events")
     if is_admin:
         return await handler(request)
     return web.HTTPFound("/admin")

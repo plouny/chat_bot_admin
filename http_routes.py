@@ -15,7 +15,7 @@ async def handle_admin(request: web.Request):
             "is_admin": False
         }
     if cache[user_id]["is_admin"]:
-        raise web.HTTPFound('/home')
+        raise web.HTTPFound('/events')
     return {
         "title": "Admin",
         "filename": "aAdmin"
@@ -73,15 +73,6 @@ async def settings(request: web.Request):
         "title": "Settings",
         "filename": "settings",
         "additional": ["form"]
-    }
-
-
-@routes.route('*', "/statistics")
-@aiohttp_jinja2.template("statistics.jinja2")
-async def statistics(request: web.Request):
-    return {
-        "title": "Statistics",
-        "filename": "statistics"
     }
 
 

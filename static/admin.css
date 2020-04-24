@@ -7,7 +7,6 @@ body {
 
 form {
     justify-content: center;
-    width: 200px;
     display: flex;
     flex-direction: column;
     height: 50%;

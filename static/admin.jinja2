@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/static/admin.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/form.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -13,16 +15,10 @@
     <nav class="navbar bg-dark navbar-dark" style="width: 100%; justify-content: center;">
             <a class="navbar-brand" href="#">Admin Page</a>
     </nav>
-    <form id="admin_form">
-        <div class="form_item">
-            <label>Логин</label>
-            <input name="login" type="text"/>
-        </div>
-        <div class="form_item">
-            <label>Пароль</label>
-            <input name="password" type="password"/>
-        </div>
-        <label id="response"></label>
+    <form id="admin_form" class="form">
+        <input placeholder="Login" name="login" type="text"/>
+        <input placeholder="Password" name="password" type="password"/>
+        <label id="response" class="alert alert-danger" style="display: none; font-size: 12px"></label>
         <button id="submit" class="btn btn-primary">Вход</button>
     </form>
     <script type="text/javascript" src="/static/admin.js"></script>

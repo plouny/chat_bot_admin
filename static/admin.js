@@ -19,7 +19,14 @@ $(() => {
                     if (data.ok) {
                         $(location).attr('href', "/events");
                     } else {
-                        $("#response").val(data.message)
+                        var res = document.getElementById("response")
+                        console.log(res)
+                        res.style.paddingBottom = "5px"
+                        res.style.paddingTop = "5px"
+                        res.style.border = "0"
+                        res.style.display = "block"
+                        
+                        res.innerHTML = data.message
                     }
                 }
             }

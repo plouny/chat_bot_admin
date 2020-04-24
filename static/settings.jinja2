@@ -2,10 +2,11 @@
 {% block content %}
 <div class="main">
     <form action="" class="form">
-        <input placeholder="Old password" name="old"/>
-        <input placeholder="New password" name="new"/>
-        <input placeholder="Repeat new password" name="repeat"/>
-        <button class="button_add">Change password</button>
+        <input placeholder="Old password" name="old" type="password"/>
+        <input placeholder="New password" name="new" type="password" />
+        <input placeholder="Repeat new password" name="repeat" type="password"/>
+        <label id="response" class="alert" style="display: none; font-size: 12px"></label>
+        <button class="btn btn-primary">Change password</button>
     </form>
 </div>
 {% endblock %}
