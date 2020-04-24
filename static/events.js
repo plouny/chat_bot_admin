@@ -7,7 +7,7 @@ $(() => {
         console.log(data);
         $("#events").empty();
         events.forEach(event => {
-            $("#events").append(`<div сlass="grid-item">${event.id}: ${event.name}</div>`);
+            $("#events").append(`<div>${event.id}: ${event.name}</div>`);
         });
     });
     socket.on("connect", () => {

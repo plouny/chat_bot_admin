@@ -1,16 +1,16 @@
-.grid-container {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: #2196F3;
+
+.grid {
     color: #ffffff;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 245px 245px;
+    grid-gap: 10px;
+  }
+  
+.grid > * {
     padding: 10px;
+    background-color:  rgb(18, 109, 212);
+    border: 5px solid rgb(38, 129, 232, 1);
+    border-radius: 10px;
 }
   
-.grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}

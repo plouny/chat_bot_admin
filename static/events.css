@@ -5,10 +5,7 @@
 }
 
 #new_event {
-    position: absolute;
-    margin-top: 10px;
-    margin-left: 30px;
-    left: 0;
+    margin-left: auto;
 }
 
 .section_custom {
